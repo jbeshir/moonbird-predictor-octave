@@ -30,3 +30,11 @@ for count = (size(Xtrain, 1) / 10):(size(Xtrain, 1) / 10):size(Xtrain, 1)
 	i = i + 1;
 end
 plot(1:10, error_train, 1:10, error_val);
+
+% Compare with naive algorithm using regular cost function and mean squared error. %
+Xval = mapper(extractUnmappedFeatures(cvData));
+yval = extractLabel(cvData);
+Jvalmse = mseCostFunction(theta, Xval, yval);
+Jvalnaivemse = mseCostFunctionNaive(cvData(:, 4), yval);
+Jval = costFunctionReg(theta, Xval, yval, 0);
+Jvalnaive = costFunctionNaive(cvData(:, 4), yval);
