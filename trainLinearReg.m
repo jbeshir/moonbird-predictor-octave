@@ -13,9 +13,9 @@ initial_theta = zeros(size(X, 2), 1);
 costFunction = @(t) costFunctionReg(t, X, y, lambda);
 
 % Now, costFunction is a function that takes in only one argument
-options = optimset('MaxIter', 200, 'GradObj', 'on');
+options = optimset('MaxIter', 20000, 'GradObj', 'on');
 
-% Minimize using fmincg
+% Minimize using fminunc
 theta = fminunc(costFunction, initial_theta, options);
 
 end
